@@ -14,7 +14,7 @@ class CatagoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.catagory');
     }
 
     /**
@@ -24,7 +24,7 @@ class CatagoryController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,15 @@ class CatagoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Catagory::create([
+            'catagory' => $request->catagory,
+        ]);
+
+        $notification = array(
+            'message' => 'New Catagory added!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('addCatagoryPage')->with($notification);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Image;
 
 class SliderController extends Controller
 {
@@ -14,7 +15,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.slider');
     }
 
     /**
@@ -35,7 +36,28 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        if ($request->file('image')) {
+            $thumbnailImage = $request->file('image');
+            $thumbnailImageName = date('YmdHi') . $thumbnailImage->getClientOriginalName();
+            Image::make($thumbnailImage)->save('photos/'.$thumbnailImageName);
+            $save_url = 'photos/'.$thumbnailImageName;
+        }
+        Slider::create([
+            'title' => $input['title'],
+            'pre-title' => $input['pre-title'],
+            'post-title' => $input['post-title'],
+            'image' => $thumbnailImageName,
+            'button' => $input['button'],
+           
+        ]);
+
+
+        $notification = array(
+            'message' => 'New Slider added!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('addSliderPage')->with($notification);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Image;
 
 class PortfolioController extends Controller
 {
@@ -14,7 +15,7 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.portfolio');
     }
 
     /**
@@ -35,7 +36,26 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        if ($request->file('image')) {
+            $thumbnailImage = $request->file('image');
+            $thumbnailImageName = date('YmdHi') . $thumbnailImage->getClientOriginalName();
+            Image::make($thumbnailImage)->save('photos/'.$thumbnailImageName);
+            $save_url = 'photos/'.$thumbnailImageName;
+        }
+        Portfolio::create([
+            'image' => $thumbnailImageName,
+            'catagory_id' => $input['catagory'],
+            'title' => $input['title'],
+            
+        ]);
+
+
+        $notification = array(
+            'message' => 'New Portfolio added!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('addPortfolioPage')->with($notification);
     }
 
     /**

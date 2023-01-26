@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,18 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->get('subject'),
+            'message' => $request->message,
+        ]);
+        $notification = array(
+            'message' => 'your Message is sent!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('contact')->with($notification);
     }
 
     /**
@@ -46,7 +57,8 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        $messages = Contact::all();
+        return view('admin.contactList', compact('messages'));
     }
 
     /**

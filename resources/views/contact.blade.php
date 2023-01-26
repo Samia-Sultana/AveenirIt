@@ -17,30 +17,33 @@
 		<!--contact-area start-->
 		<section class="contact-area pt-120 pb-90 pt-md-60 pb-md-60 pt-xs-60 pb-xs-60">
 			<div class="container">
+				
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="section-title mb-60">
 							<p class="fs-14 lh-1 mb-15">Get In Touch</p>
 							<h2 class="sect-title lh-1">Let's help you!</h2>
 						</div>
-						<form class="row contact-form mb-30" action="#">
+						<form action="{{route('addContact')}}" method="POST" class="row contact-form mb-30">
+					@csrf
+						
 							<div class="col-lg-6 col-md-6">
 								<div class="input-box mb-20">
-									<input type="text" placeholder="Full name **">
+									<input type="text" placeholder="Full name **" name="name">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="input-box mail-input mb-20">
-									<input type="text" placeholder="Email address **">
+									<input type="text" placeholder="Email address **" name="email">
 								</div>
 							</div>
 							<div class="col-lg-12 mb-20">
 								<div class="input-box sub-input">
-									<select name="job" class="job-select">
+									<select name="subject" class="job-select">
 										<option value="Subject">Subject</option>
-										<option value="">It</option>
-										<option value="">Development</option>
-										<option value="">Ui/Ux</option>
+										<option value="IT">It</option>
+										<option value="Development">Development</option>
+										<option value="Ui/Ux">Ui/Ux</option>
 									</select>
 								</div>
 							</div>
@@ -98,6 +101,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</section>
 		<!--contact-area end-->

@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.team');
     }
 
     /**
@@ -35,7 +35,18 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Team::create([
+            'member' => $input['name'],
+            'designation' => $input['designation'],
+            'priority' => $input['priority'],
+
+        ]);
+        $notification = array(
+            'message' => 'New Member added!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('addTeamPage')->with($notification);
     }
 
     /**

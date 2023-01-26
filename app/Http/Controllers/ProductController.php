@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Image;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.product');
     }
 
     /**
@@ -35,7 +36,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        if ($request->file('image')) {
+            $thumbnailImage = $request->file('image');
+            $thumbnailImageName = date('YmdHi') . $thumbnailImage->getClientOriginalName();
+            Image::make($thumbnailImage)->save('photos/'.$thumbnailImageName);
+            $save_url = 'photos/'.$thumbnailImageName;
+        }
+        Product::create([
+            'title' => $input['title'],
+            'image' => $thumbnailImageName,
+            'link' => $input['link'],
+           
+        ]);
+
+
+        $notification = array(
+            'message' => 'New Product added!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('addProductPage')->with($notification);
     }
 
     /**

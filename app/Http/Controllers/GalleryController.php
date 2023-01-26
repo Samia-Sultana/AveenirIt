@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Image;
 
 class GalleryController extends Controller
 {
@@ -14,7 +15,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.gallery');
     }
 
     /**
@@ -35,7 +36,25 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->file('images')) {
+            $imageArray = [];
+            foreach (($request->file('images')) as $image) {
+                $file = $image;
+                $filename = date('YmdHi') . $file->getClientOriginalName();
+                Image::make($file)->save('photos/'.$filename);
+                $save_url = 'photos/'.$filename;
+                $imageArray = $filename;
+                Gallery::create([
+                    'image' => $imageArray
+                ]);
+            }
+        }
+        $notification = array(
+            'message' => 'New Image added!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('addGalleryPage')->with($notification);
     }
 
     /**

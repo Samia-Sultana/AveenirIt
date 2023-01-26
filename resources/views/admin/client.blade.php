@@ -1,15 +1,15 @@
 @extends('masterAdmin')
-@section('product')
+@section('client')
 
 <div class="page-wrapper">
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>product Add</h4>
-                        <h6>Create new product</h6>
+                        <h4>client Add</h4>
+                        <h6>Create new client</h6>
                     </div>
                 </div>
-                <form enctype="multipart/form-data" method="POST" action="{{ route('addProduct') }}" class="d-flex">
+                <form enctype="multipart/form-data" method="POST" action="{{ route('addClient') }}" class="d-flex">
         @csrf
                 <div class="card">
                     <div class="card-body">
@@ -17,30 +17,16 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 col-12">
                                     <div class="form-group">
-                                        <label for="validationServer03">Title</label>
-                                        <input type="text" class="form-control is-invalid" id="title" name="title" required>
-                                        <div class="invalid-feedback"></div>
+                                        <label for="image">Client Logo</label><br>
+                                        <input type="file" id="image" name="image"  />
 
                                     </div>
                                 </div>
                                
                                
-                                <div class="col-lg-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label>Image</label>
-
-                                        <input type="file" class="form-control" aria-label="file example" id="image" name="image" required>
-                                        <div class="invalid-feedback"></div>
-
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-6 col-sm-6 col-lg-12">
-                                    <div class="form-group">
-                                        <label>URL</label>
-                                        <input type="text" class="form-control" id="link" name="link">
-                                    </div>
-                                </div>
+                              
+                              
+                               
                                 <div class="col-lg-12">
                                     <button class="btn btn-submit me-2" type="submit">Submit</button>
                                     

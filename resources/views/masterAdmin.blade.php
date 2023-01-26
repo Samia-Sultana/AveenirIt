@@ -31,6 +31,18 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+@include('admin.adminNavbar')
+@yield('dashboard')
+@yield('slider')
+@yield('team')
+@yield('catagory')
+@yield('portfolio')
+@yield('gallery')
+@yield('contactList')
+@yield('product')
+@yield('client')
+
+
 
 
     <script src="{{asset('adminFrontend/assets/js/jquery-3.6.0.min.js')}}"></script>
