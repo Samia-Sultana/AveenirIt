@@ -1,5 +1,5 @@
 ﻿@extends('master')
-@section('welcome')
+@section('index')
 	
 
 	<main>

@@ -30,7 +30,7 @@
 
 
 @include('navbar')
-@yield('welcome')
+@yield('index')
 @yield('company-overview')
 @yield('mission-vision')
 @yield('concern')
