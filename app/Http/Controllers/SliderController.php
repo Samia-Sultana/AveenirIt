@@ -45,8 +45,8 @@ class SliderController extends Controller
         }
         Slider::create([
             'title' => $input['title'],
-            'pre-title' => $input['pre-title'],
-            'post-title' => $input['post-title'],
+            'pre_title' => $input['pre-title'],
+            'post_title' => $input['post-title'],
             'image' => $thumbnailImageName,
             'button' => $input['button'],
            
@@ -68,7 +68,8 @@ class SliderController extends Controller
      */
     public function show(Slider $slider)
     {
-        //
+        $sliders = Slider::all();
+        return view('admin.sliderList', compact('sliders'));
     }
 
     /**

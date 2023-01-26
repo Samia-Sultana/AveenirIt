@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Image;
 
 class TeamController extends Controller
 {
@@ -36,9 +37,16 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        if ($request->file('image')) {
+            $thumbnailImage = $request->file('image');
+            $thumbnailImageName = date('YmdHi') . $thumbnailImage->getClientOriginalName();
+            Image::make($thumbnailImage)->save('photos/'.$thumbnailImageName);
+            $save_url = 'photos/'.$thumbnailImageName;
+        }
         Team::create([
             'member' => $input['name'],
             'designation' => $input['designation'],
+            'image' => $thumbnailImageName,
             'priority' => $input['priority'],
 
         ]);
@@ -57,7 +65,8 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        $members = Team::all();
+        return view('admin.teamList', compact('members'));
     }
 
     /**

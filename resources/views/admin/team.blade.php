@@ -32,6 +32,15 @@
 
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>Image</label>
+
+                                        <input type="file" class="form-control" aria-label="file example" id="image" name="image" required>
+                                        <div class="invalid-feedback"></div>
+
+                                    </div>
+                                </div>
                                 <div class="col-lg-2 col-sm-2 col-5">
                                     <div class="form-group">
                                         <label>Priority</label>

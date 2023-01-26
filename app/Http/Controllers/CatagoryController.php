@@ -54,7 +54,8 @@ class CatagoryController extends Controller
      */
     public function show(Catagory $catagory)
     {
-        //
+        $catagories = Catagory::all();
+        return view('admin.catagoryList', compact('catagories'));
     }
 
     /**

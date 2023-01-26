@@ -41,6 +41,14 @@
 @yield('contactList')
 @yield('product')
 @yield('client')
+@yield('teamList')
+@yield('sliderList')
+@yield('productList')
+@yield('portfolioList')
+@yield('galleryList')
+@yield('clientList')
+@yield('catagoryList')
+
 
 
 

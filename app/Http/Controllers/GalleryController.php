@@ -65,7 +65,8 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        //
+        $images = Gallery::all();
+        return view('admin.galleryList', compact('images'));
     }
 
     /**

@@ -66,7 +66,8 @@ class PortfolioController extends Controller
      */
     public function show(Portfolio $portfolio)
     {
-        //
+        $portfolios = Portfolio::all();
+        return view('admin.portfolioList', compact('portfolios'));
     }
 
     /**
