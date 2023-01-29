@@ -98,8 +98,15 @@ class GalleryController extends Controller
      * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function destroy(Request $request,Gallery $gallery)
     {
-        //
+        Gallery::find($request->photo_id)->delete();
+        $notification = array(
+            'message' => 'Image Deleted!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('galleryList')->with($notification);
+
     }
 }

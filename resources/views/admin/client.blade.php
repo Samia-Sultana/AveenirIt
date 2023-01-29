@@ -28,7 +28,8 @@
                               
                                
                                 <div class="col-lg-12">
-                                    <button class="btn btn-submit me-2" type="submit">Submit</button>
+                               
+                                    
                                     
                                 </div>
                         </form>

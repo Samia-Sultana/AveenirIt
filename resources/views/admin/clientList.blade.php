@@ -49,13 +49,13 @@
                                   
                                    
                                     <td>
-                                        <form action="" method="post">
-                                            @csrf
-                                            <input type="hidden" value="{{$client->id}}" name="product_id">
-                                            <button type="submit" class="btn btn-danger btn-delete-product">
-                                                <img src="{{asset('adminFrontend/assets/img/icons/delete.svg')}}" alt="img">
-                                            </button>
-                                        </form>
+                                    <form action="{{route('deleteClient')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{$client->id}}" name="client_id">
+                                        <button type="submit" class="btn btn-danger btn-delete-product">
+                                            <img src="{{asset('adminFrontend/assets/img/icons/delete.svg')}}" alt="img">
+                                        </button>
+                                    </form>
 
 
                                     </td>

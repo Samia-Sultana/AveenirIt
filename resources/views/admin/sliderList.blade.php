@@ -67,9 +67,49 @@
                                     
                                    
                                     <td>
-                                        <form action="" method="post">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{'#update_supplier_'.$slider->id}}">
+                                        <img src="{{asset('adminFrontend/assets/img/icons/edit.svg')}}" alt="img">
+                                        </button>
+                                        <div class="modal fade" id="{{'update_supplier_' . $slider->id}}" tabindex="-1" role="dialog" aria-labelledby="update_product_lebel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="update_supplier_lebel">Update Slider</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="POST" action="{{route('updateSlider')}}" class="d-flex" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div class="p-1">
+                                                                <input type="hidden" id="update_sliderId" name="update_sliderId" value="{{$slider->id}}">
+                                                                <input type="text" id="update_name" name="update_title" value="{{$slider->title}}"><br><br>
+                                                                <input type="text" id="update_email" name="update_pre_title" value="{{$slider->pre_title}}"><br><br>
+                                                                <input type="text" id="update_phone" name="update_post_title" value="{{$slider->post_title}}"><br><br>
+                                                                <input type="text" id="update_address" name="update_button" value="{{$slider->button}}"><br><br>
+                                                                <input type="file" id="update_image" name="update_image" ><br><br>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary btn-update-supplier">Save changes</button>
+                                                            </div>
+
+                                                        </form>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                        <form action="{{route('deleteSlider')}}" method="post">
                                             @csrf
-                                            <input type="hidden" value="{{$slider->id}}" name="product_id">
+                                            <input type="hidden" value="{{$slider->id}}" name="slider_id">
                                             <button type="submit" class="btn btn-danger btn-delete-product">
                                                 <img src="{{asset('adminFrontend/assets/img/icons/delete.svg')}}" alt="img">
                                             </button>

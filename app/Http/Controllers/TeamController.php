@@ -89,7 +89,28 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $input = $request->all();
+        $team = Team::find($request->update_memberId);
+
+        if ($request->file('update_image')) {
+            
+            $thumbnailImage = $request->file('update_image');
+            $thumbnailImageName = date('YmdHi') . $thumbnailImage->getClientOriginalName();
+            Image::make($thumbnailImage)->save('photos/'.$thumbnailImageName);
+            $save_url = 'photos/'.$thumbnailImageName;
+            $team['image'] = $thumbnailImageName;
+        }
+        
+        $team['member'] = $input['update_name'];
+        $team['designation'] = $input['update_designation'];
+        $team['priority'] = $input['update_priority'];
+        $team->save();
+
+        $notification = array(
+            'message' => 'Team updated!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('teamList')->with($notification);
     }
 
     /**
@@ -98,8 +119,16 @@ class TeamController extends Controller
      * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Team $team)
+    public function destroy(Request $request,Team $team)
     {
-        //
+        Team::find($request->member_id)->delete();
+
+        $notification = array(
+            'message' => 'Team member deleted!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('teamList')->with($notification);
+
+        
     }
 }

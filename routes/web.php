@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/update/slider',[SliderController::class,'update'])->name('updateSlider');
     Route::post('/delete/slider',[SliderController::class,'destroy'])->name('deleteSlider');
 
-    Route::get('/add/team',[TeamController::class,'index'])->name('addTeamPage');
+    Route::get('add/team',[TeamController::class,'index'])->name('addTeamPage');
     Route::post('/add/team',[TeamController::class,'store'])->name('addTeam');
     Route::get('/team/list',[TeamController::class,'show'])->name('teamList');
     Route::post('/update/team',[TeamController::class,'update'])->name('updateTeam');
@@ -115,7 +115,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/delete/gallery',[GalleryController::class,'destroy'])->name('deleteGallery');
 
     Route::get('/contact/list',[ContactController::class,'show'])->name('contactList');
-    Route::post('/delete/contact',[ContactController::class,'destroy'])->name('deletecontact');
+    Route::post('/delete/contact',[ContactController::class,'destroy'])->name('deleteContact');
 
     Route::get('/product',[ProductController::class,'index'])->name('addProductPage');
     Route::post('/add/product',[ProductController::class,'store'])->name('addProduct');

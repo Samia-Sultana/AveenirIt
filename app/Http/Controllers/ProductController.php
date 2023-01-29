@@ -90,7 +90,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $input = $request->all();
+        $product = Product::find($request->update_productId);
+
+        if ($request->file('update_image')) {
+            $thumbnailImage = $request->file('update_image');
+            $thumbnailImageName = date('YmdHi') . $thumbnailImage->getClientOriginalName();
+            Image::make($thumbnailImage)->save('photos/'.$thumbnailImageName);
+            $save_url = 'photos/'.$thumbnailImageName;
+            $product['image'] = $thumbnailImageName;
+        }
+
+        $product['title'] = $request->update_title;
+        $product['link'] = $input['update_link'];
+        $product->save();
+
+        $notification = array(
+            'message' => 'Product Updated!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('productList')->with($notification);
+
     }
 
     /**
@@ -99,8 +119,15 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        //
+        Product::find($request->product_id)->delete();
+        $notification = array(
+            'message' => 'Product deleted!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('productList')->with($notification);
+
+        
     }
 }

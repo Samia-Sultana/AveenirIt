@@ -49,9 +49,9 @@
                                   
                                    
                                     <td>
-                                        <form action="" method="post">
+                                        <form action="{{route('deleteGallery')}}" method="POST">
                                             @csrf
-                                            <input type="hidden" value="{{$image->id}}" name="product_id">
+                                            <input type="hidden" value="{{$image->id}}" name="photo_id">
                                             <button type="submit" class="btn btn-danger btn-delete-product">
                                                 <img src="{{asset('adminFrontend/assets/img/icons/delete.svg')}}" alt="img">
                                             </button>

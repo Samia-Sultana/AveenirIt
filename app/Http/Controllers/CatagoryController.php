@@ -87,8 +87,14 @@ class CatagoryController extends Controller
      * @param  \App\Models\Catagory  $catagory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catagory $catagory)
+    public function destroy(Request $request,Catagory $catagory)
     {
-        //
+        Catagory::find($request->catagory_id)->delete();
+        $notification = array(
+            'message' => 'Catagory deleted!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('catagoryList')->with($notification);
+
     }
 }

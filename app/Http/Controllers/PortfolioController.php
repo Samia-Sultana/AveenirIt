@@ -90,7 +90,28 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, Portfolio $portfolio)
     {
-        //
+        $input = $request->all();
+        $portfolio = Portfolio::find($request->update_portfolioId);
+
+
+        if ($request->file('update_image')) {
+            $thumbnailImage = $request->file('update_image');
+            $thumbnailImageName = date('YmdHi') . $thumbnailImage->getClientOriginalName();
+            Image::make($thumbnailImage)->save('photos/'.$thumbnailImageName);
+            $save_url = 'photos/'.$thumbnailImageName;
+            $portfolio['image'] = $thumbnailImageName;
+
+        }
+        $portfolio['title'] = $input['update_title'];
+        $portfolio['catagory_id'] = $input['update_catagory'];
+        $portfolio->save();
+
+        $notification = array(
+            'message' => 'Portfolio updated!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('portfolioList')->with($notification);
+        
     }
 
     /**
@@ -99,8 +120,16 @@ class PortfolioController extends Controller
      * @param  \App\Models\Portfolio  $portfolio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Portfolio $portfolio)
+    public function destroy(Request $request,Portfolio $portfolio)
     {
-        //
+        Portfolio::find($request->portfolio_id)->delete();
+
+        $notification = array(
+            'message' => 'Portfolio deleted!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('portfolioList')->with($notification);
+
+        
     }
 }
