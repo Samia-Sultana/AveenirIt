@@ -20,80 +20,27 @@
 			<div class="container">
 				<div class="row">
 					<div class="about-text-wrapper2 mb-30 pr-75 section-title mb-50">
-						<h6 class="semi-title semi-title2 text-center">DEVELOPER TEAM</h6>
+						<h6 class="semi-title semi-title2 text-center">OUR TEAM</h6>
 						<div class="bar"></div>
 					</div>
+					<?php
+					$members = App\Models\Team::orderBy('priority', 'asc')->get();
+					
+					?>
+					@foreach($members as $member)
 					<div class="col-lg-3 col-md-6">
 						<div class="team-wrapper text-center mb-45">
 							<div class="team-thumb">
-								<img src="{{asset('assets/img/ceo.png')}}"  alt="Image">
+								<img src="{{url('photos/' . $member->image)}}"  alt="Image">
 							</div>
 							<div class="team-content">
-								<h4 class="sub-title text-heding2">Ontor Azan</h4>
-								<h6 class="theme-col">CEO</h6>
+								<h4 class="sub-title text-heding2">{{$member->member}}</h4>
+								<h6 class="theme-col">{{$member->designation}}</h6>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="team-wrapper text-center mb-45">
-							<div class="team-thumb">
-								<img src="{{asset('assets/img/fahim.png')}}" alt="Image">
-							</div>
-							<div class="team-content">
-								<h4 class="sub-title text-heding2">Shahoriar Fahim</h4>
-								<h6 class="theme-col">Software Engineer</h6>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="team-wrapper text-center mb-45">
-							<div class="team-thumb">
-								<img src="{{asset('assets/img/samia.png')}}" alt="Image">
-							</div>
-							<div class="team-content">
-								<h4 class="sub-title text-heding2">Samia Sultana</h4>
-								<h6 class="theme-col">Software Engineer</h6>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="team-wrapper text-center mb-45">
-							<div class="team-thumb">
-								<img src="{{asset('assets/img/ovichowdhury.png')}}" alt="Image">
-							</div>
-							<div class="team-content">
-								<h4 class="sub-title text-heding2">Ovi Chowdhury</h4>
-								<h6 class="theme-col">Web Designer</h6>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="team-wrapper text-center mb-45">
-							<div class="team-thumb">
-								<img src="{{asset('assets/img/white-img.png')}}" alt="Image">
-							</div>
-							<div class="team-content">
-								<h4 class="sub-title text-heding2">Saddam Hossain</h4>
-								<h6 class="theme-col">Project Manager</h6>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="team-wrapper text-center mb-45">
-							<div class="team-thumb">
-								<img src="{{asset('assets/img/white-img.png')}}" alt="Image">
-							</div>
-							<div class="team-content">
-								<h4 class="sub-title text-heding2">Albud Bari Parves</h4>
-								<h6 class="theme-col">Data Scientist</h6>
-								
-							</div>
-						</div>
-					</div>
+					@endforeach
+					
 				</div>
 			</div>
 		</section>

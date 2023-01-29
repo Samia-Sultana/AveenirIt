@@ -27,41 +27,17 @@
 					</div>
 				</div>
 				<div class="grid row align-items-center">
+					<?php
+					 $photos = App\Models\Gallery::all();
+					?>
+					@foreach($photos as $photo)
 					<div class="col-lg-4 col-md-6 col-sm-6 grid-item cat3 cat4">
 						<div class=" mb-30">
-							<img class="img-fluid" src="{{asset('assets/img/office2.jpg')}}" alt="Portfolio Img">
+							<img class="img-fluid" src="{{url('photos/' . $photo->image)}}" alt="Portfolio Img">
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6 grid-item cat3 cat4">
-						<div class=" mb-30">
-							<img class="img-fluid" src="{{asset('assets/img/office3.jpg')}}" alt="Portfolio Img">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6 grid-item cat3 cat4">
-						<div class=" mb-30">
-							<img class="img-fluid" src="{{asset('assets/img/office4.jpg')}}" alt="Portfolio Img">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6 grid-item cat3 cat4">
-						<div class=" mb-30">
-							<img class="img-fluid" src="{{asset('assets/img/office5.jpg')}}" alt="Portfolio Img">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6 grid-item cat3 cat4">
-						<div class=" mb-30">
-							<img class="img-fluid" src="{{asset('assets/img/office6.jpg')}}" alt="Portfolio Img">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6 grid-item cat3 cat4">
-						<div class=" mb-30">
-							<img class="img-fluid" src="{{asset('assets/img/office7.jpg')}}" alt="Portfolio Img">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6 grid-item cat3 cat4">
-						<div class=" mb-30">
-							<img class="img-fluid" src="{{asset('assets/img/office8.jpg')}}" alt="Portfolio Img">
-						</div>
-					</div>
+					@endforeach
+					
 				</div>
 			</div>
 		</section>

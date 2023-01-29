@@ -35,6 +35,18 @@ Route::get('/gallery', function () {
 Route::get('/portfolio', function () {
     return view('portfolio');
 })->name('portfolio');
+Route::get('/portfolio/1', function () {
+    return view('portfolio1');
+})->name('portfolio_1');
+Route::get('/portfolio/2', function () {
+    return view('portfolio2');
+})->name('portfolio_2');
+Route::get('/portfolio/3', function () {
+    return view('portfolio3');
+})->name('portfolio_3');
+Route::get('/portfolio/4', function () {
+    return view('portfolio4');
+})->name('portfolio_4');
 Route::get('/one-stop-solution', function () {
     return view('one-stop-solution');
 })->name('one-stop-solution');
@@ -128,6 +140,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/client/list',[ClientController::class,'show'])->name('clientList');
     Route::post('/update/client',[ClientController::class,'update'])->name('updateClient');
     Route::post('/delete/client',[ClientController::class,'destroy'])->name('deleteClient');
+
+
+   
+
+
 });
 
 require __DIR__.'/auth.php';
