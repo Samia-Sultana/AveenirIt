@@ -46,10 +46,7 @@
 @yield('portfolio')
 @yield('gallery')
 @yield('contact')
-@yield('portfolio_1')
-@yield('portfolio_2')
-@yield('portfolio_3')
-@yield('portfolio_4')
+@yield('product_portfolio')
 @include('footer')
 
 

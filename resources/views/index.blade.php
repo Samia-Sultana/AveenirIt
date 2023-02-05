@@ -318,7 +318,7 @@
 						<div class="single-portfolio">
 							<h4 class="portfolio-title ">{{$product->title}}</h4>
 						</div>
-						<a class="pf-btn" href="{{$product->link}}"><i class="fal fa-long-arrow-right"></i></a>
+						<a class="pf-btn" href="{{route('product_portfolio', ['id' => $product->id])}}"><i class="fal fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				@endforeach

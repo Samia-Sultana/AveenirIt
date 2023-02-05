@@ -50,6 +50,15 @@
 
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>Portfolio column size</label>
+
+                                        <input type="text" class="form-control" aria-label="file example" id="column" name="column" required>
+                                        <div class="invalid-feedback"></div>
+
+                                    </div>
+                                </div>
                                 
                                
                                 <div class="col-lg-12">

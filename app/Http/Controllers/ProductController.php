@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Productportfolio;
 use Illuminate\Http\Request;
 use Image;
 
@@ -36,6 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $input = $request->all();
         if ($request->file('image')) {
             $thumbnailImage = $request->file('image');
@@ -66,6 +68,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+      
         $products = Product::all();
         return view('admin.productList', compact('products'));
     }
@@ -129,5 +132,12 @@ class ProductController extends Controller
         return redirect()->route('productList')->with($notification);
 
         
+    }
+
+    public function product_portfolio(Request $request, $id){
+        $portfolio = Productportfolio::where('product_id', $id)->get();
+        return view('product_portfolio', compact('portfolio'));
+
+
     }
 }

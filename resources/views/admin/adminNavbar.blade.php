@@ -160,6 +160,10 @@
                                 <li><a href="{{route('addProductPage')}}">Add Product</a></li>
                                
                                 <li><a href="{{route('productList')}}">Product List</a></li>
+
+                                <li><a href="{{route('addProductPortfolioPage')}}">Add Product Portfolio</a></li>
+                               
+                                <li><a href="{{route('productPortfolioListAll')}}">Product Portfolio List</a></li>
                                 
                                 
                             </ul>

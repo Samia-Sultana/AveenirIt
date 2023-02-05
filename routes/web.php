@@ -6,9 +6,11 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductportfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TeamController;
+use App\Models\Productportfolio;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,18 +37,7 @@ Route::get('/gallery', function () {
 Route::get('/portfolio', function () {
     return view('portfolio');
 })->name('portfolio');
-Route::get('/portfolio/1', function () {
-    return view('portfolio1');
-})->name('portfolio_1');
-Route::get('/portfolio/2', function () {
-    return view('portfolio2');
-})->name('portfolio_2');
-Route::get('/portfolio/3', function () {
-    return view('portfolio3');
-})->name('portfolio_3');
-Route::get('/portfolio/4', function () {
-    return view('portfolio4');
-})->name('portfolio_4');
+Route::get('/product/portfolio/{id}', [ProductController::class,'product_portfolio'])->name('product_portfolio');
 Route::get('/one-stop-solution', function () {
     return view('one-stop-solution');
 })->name('one-stop-solution');
@@ -135,15 +126,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/update/product',[ProductController::class,'update'])->name('updateProduct');
     Route::post('/delete/product',[ProductController::class,'destroy'])->name('deleteProduct');
 
+    Route::get('/product/portfolio',[ProductportfolioController::class,'index'])->name('addProductPortfolioPage');
+    Route::post('/add/product/portfolio',[ProductportfolioController::class,'store'])->name('addProductPortfolio');
+    Route::get('/product/portfolio/list/all', [ProductportfolioController::class,'show'])->name('productPortfolioListAll');
+    Route::post('/update/product/portfolio',[ProductportfolioController::class,'update'])->name('updateProductPortfolio');
+    Route::post('/delete/product/portfolio',[ProductportfolioController::class,'destroy'])->name('deleteProductPortfolio');
+
     Route::get('/client',[ClientController::class,'index'])->name('addClientPage');
     Route::post('/add/client',[ClientController::class,'store'])->name('addClient');
     Route::get('/client/list',[ClientController::class,'show'])->name('clientList');
     Route::post('/update/client',[ClientController::class,'update'])->name('updateClient');
     Route::post('/delete/client',[ClientController::class,'destroy'])->name('deleteClient');
-
-
-   
-
 
 });
 

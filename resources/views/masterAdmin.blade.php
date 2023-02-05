@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{asset('adminFrontend/assets/plugins/owlcarousel/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminFrontend/assets/css/style.css')}}">
 
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+
 
 
     <!-- Scripts -->
@@ -48,6 +50,8 @@
 @yield('galleryList')
 @yield('clientList')
 @yield('catagoryList')
+@yield('product_portfolio')
+@yield('product_portfolio_list')
 
 
 
@@ -75,6 +79,7 @@
     <script src="{{asset('adminFrontend/assets/plugins/sweetalert/sweetalerts.min.js')}}"></script>
 
     <script src="{{asset('adminFrontend/assets/js/script.js')}}"></script>
+   
 </body>
 
 </html>

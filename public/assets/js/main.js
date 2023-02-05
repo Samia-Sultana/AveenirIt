@@ -655,6 +655,10 @@
 				gutter: 0
 			}
 		});
+
+		$grid.isotope({
+			filter: '.cat4'
+		});
 		// filter items on button click
 		$('.portfolio-menu').on('click', 'button', function () {
 			var filterValue = $(this).attr('data-filter');
